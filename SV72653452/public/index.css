@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    padding: 20px 0;
+}
+
+#productos, #carrito {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: #fff;
+    margin-bottom: 20px;
+    
+}
+
+#productos h2, #carrito h2 {
+    text-align: center;
+    color: #555;
+    font-size: 50px; 
+
+}
+
+#productos ul, #carrito ul {
+    list-style: none;
+    padding: 0;
+    
+    
+}
+
+#productos li, #carrito li {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+button {
+    background-color: #008CBA; 
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-size: 20px; 
+}
+
+.imagen-producto {
+    width: 200px;
+    height: 264px;
+}
+.precio {
+    font-size: 30px; 
+}
+
+li {
+    font-size: 30px; 
+}
+.imagen-carrito {
+    width: 300px;  
+    height: 300px; 
+}
