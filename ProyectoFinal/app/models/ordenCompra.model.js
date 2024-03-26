@@ -25,5 +25,20 @@ module.exports = (sequelize, DataTypes) => {
         },
        
     });
+    OrdenCompra.associate = (models) => {
+        OrdenCompra.belongsTo(models.Cursos, {
+          foreignKey: "cursoId",
+          as: "curso",
+        });
+        OrdenCompra.belongsTo(models.Usuarios, {
+          foreignKey: "usuarioId",
+          as: "usuario",
+        });
+        OrdenCompra.hasMany(models.Cupon, {
+          foreignKey: "ordenCompraId",
+          as: "cupones",
+        });
+      };
+    
     return OrdenCompra;
 };

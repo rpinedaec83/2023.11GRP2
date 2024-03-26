@@ -12,9 +12,15 @@ module.exports = (sequelize, DataTypes) => {
             unique: true 
        
         },
-
+    
 
         
     });
+    Usuarios.associate = (models) => {
+        Usuarios.hasMany(models.OrdenCompra, {
+          foreignKey: "usuarioId",
+          as: "ordenCompras",
+        });
+      };
     return Usuarios;
 };

@@ -59,13 +59,13 @@ exports.findOne = (req, res) => {
                 res.send(data);
             } else {
                 res.status(404).send({
-                    message: `Cannot find sexo with id=${id}.`
+                    message: `Cannot find cupon with id=${id}.`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error retrieving sexo with id=" + id
+                message: "Error retrieving cupon with id=" + id
             });
         });
 };
@@ -101,7 +101,7 @@ exports.delete = (req, res) => {
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "sexo was deleted successfully!"
+                    message: "cupon was deleted successfully!"
                 });
             } else {
                 res.send({

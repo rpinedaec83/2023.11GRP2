@@ -54,7 +54,7 @@ exports.findAll = (req, res) => {
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while retrieving sexos."
+                    err.message || "Some error occurred while retrieving usuarios."
             });
         });
 };
@@ -67,13 +67,13 @@ exports.findOne = (req, res) => {
                 res.send(data);
             } else {
                 res.status(404).send({
-                    message: `Cannot find sexo with id=${id}.`
+                    message: `Cannot find usuarios with id=${id}.`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error retrieving sexo with id=" + id
+                message: "Error retrieving usuario with id=" + id
             });
         });
 };
@@ -86,7 +86,7 @@ exports.update = (req, res) => {
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "sexo was updated successfully."
+                    message: "usario was updated successfully."
                 });
             } else {
                 res.send({
@@ -129,12 +129,12 @@ exports.deleteAll = (req, res) => {
       truncate: false
     })
       .then(nums => {
-        res.send({ message: `${nums} sexos were deleted successfully!` });
+        res.send({ message: `${nums} usuarios were deleted successfully!` });
       })
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while removing all sexos."
+            err.message || "Some error occurred while removing all usuarios."
         });
       });
 };

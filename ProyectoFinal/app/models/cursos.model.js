@@ -28,5 +28,16 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
         },
     });
+    Cursos.associate = (models) => {
+        Cursos.hasMany(models.OrdenCompra, {
+          foreignKey: "cursoId",
+          as: "ordenCompras",
+        });
+        Cursos.belongsToMany(models.Usuarios, {
+          through: "usuario_curso",
+          as: "usuarios",
+          foreignKey: "cursoId",
+        });
+      };
     return Cursos;
 };

@@ -27,7 +27,7 @@ exports.create = (req, res) => {
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while creating the sexo."
+                    err.message || "Some error occurred while creating the curso."
             });
         });
 };
@@ -64,13 +64,13 @@ exports.findOne = (req, res) => {
                 res.send(data);
             } else {
                 res.status(404).send({
-                    message: `Cannot find sexo with id=${id}.`
+                    message: `Cannot find curso with id=${id}.`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error retrieving sexo with id=" + id
+                message: "Error retrieving curso with id=" + id
             });
         });
 };
@@ -83,11 +83,11 @@ exports.update = (req, res) => {
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "sexo was updated successfully."
+                    message: "curso was updated successfully."
                 });
             } else {
                 res.send({
-                    message: `Cannot update sexo with id=${id}. Maybe sexo was not found or req.body is empty!`
+                    message: `Cannot update curso with id=${id}. Maybe sexo was not found or req.body is empty!`
                 });
             }
         })

@@ -5,8 +5,14 @@ module.exports = (sequelize, DataTypes) => {
             
        
         },
-
+    
 
     });
+    Cupon.associate = (models) => {
+        Cupon.belongsTo(models.OrdenCompra, {
+          foreignKey: "ordenCompraId",
+          as: "ordenCompra",
+        });
+      };
     return Cupon;
 };

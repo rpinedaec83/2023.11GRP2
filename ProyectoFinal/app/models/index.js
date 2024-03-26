@@ -31,25 +31,6 @@ db.cupones = require("./cupon.model.js")(sequelize, Sequelize);
 
 
 
-db.usuarios.hasMany(db.ordenCompra, {as:"OrdenCompra"})
-db.ordenCompra.belongsTo(db.usuarios, {
-  foreignKey: "usuarioId",
-  as: "usuarios",
-});
-
-db.cupones.hasMany(db.ordenCompra, {as:"OrdenCompra"})
-db.ordenCompra.belongsTo(db.cupones, {
-  foreignKey: "cuponId",
-  as: "cupon",
-});
-
-
-db.usuarios.hasMany(db.cursos, {as:"cursos"})
-db.cursos.belongsTo(db.usuarios, {
-  foreignKey: "usuarioId",
-  as: "usuarios",
-});
-
  
 
 module.exports = db;
