@@ -13,9 +13,7 @@ exports.create = (req, res) => {
     const cursos = {
         nombre: req.body.nombre,
         descripcion: req.body.descripcion,
-        imagen: req.body.imagen,
-        portada: req.body.portada,
-        valor: req.body.valor,
+        precio: req.body.precio,
         usuarioId: req.body.usuarioId
     };
 
