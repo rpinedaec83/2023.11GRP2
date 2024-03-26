@@ -24,32 +24,17 @@ db.cursos = require("./cursos.model.js")(sequelize, Sequelize);
 db.ordenCompra = require("./ordenCompra.model.js")(sequelize, Sequelize);
 db.cupones = require("./cupon.model.js")(sequelize, Sequelize);
 
-// Define la relación entre usuarios y cursos (muchos a muchos)
-db.cursos.associate = function(models) {
-  db.cursos.belongsToMany(db.usuarios, {
-    through: "usuario_curso",
-    foreignKey: "cursoId",
-    otherKey: "usuarioId",
-    as: "usuarios"
-  });
-};
+// Asociación entre usuarios y ordenCompra
+db.usuarios.hasMany(db.ordenCompra);
+db.ordenCompra.belongsTo(db.usuarios);
 
-// Define la relación entre usuarios y ordenCompra (uno a muchos)
-db.usuarios.associate = function(models) {
-  db.usuarios.hasMany(db.ordenCompra, {
-    foreignKey: "usuarioId",
-    as: "ordenesCompra"
-  });
-};
+// Asociación entre cupones y ordenCompra
+db.cupones.hasMany(db.ordenCompra);
+db.ordenCompra.belongsTo(db.cupones);
 
-// Define la relación entre ordenCompra y cupones (uno a muchos)
-db.ordenCompra.associate = function(models) {
-  db.ordenCompra.hasMany(db.cupones, {
-    foreignKey: "ordenCompraId",
-    as: "cupones"
-  });
-};
+// Asociación entre usuarios y cursos
+db.usuarios.hasMany(db.cursos);
+db.cursos.belongsTo(db.usuarios);
 
-db.sequelize.sync();
 
 module.exports = db;

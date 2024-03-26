@@ -13,7 +13,9 @@ exports.create = (req, res) => {
     const cursos = {
         nombre: req.body.nombre,
         descripcion: req.body.descripcion,
-        precio: req.body.precio,
+        imagen: req.body.imagen,
+        portada: req.body.portada,
+        valor: req.body.valor,
         usuarioId: req.body.usuarioId
     };
 
@@ -25,7 +27,7 @@ exports.create = (req, res) => {
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while creating the curso."
+                    err.message || "Some error occurred while creating the sexo."
             });
         });
 };
@@ -62,13 +64,13 @@ exports.findOne = (req, res) => {
                 res.send(data);
             } else {
                 res.status(404).send({
-                    message: `Cannot find curso with id=${id}.`
+                    message: `Cannot find sexo with id=${id}.`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error retrieving curso with id=" + id
+                message: "Error retrieving sexo with id=" + id
             });
         });
 };
@@ -81,11 +83,11 @@ exports.update = (req, res) => {
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "curso was updated successfully."
+                    message: "sexo was updated successfully."
                 });
             } else {
                 res.send({
-                    message: `Cannot update curso with id=${id}. Maybe sexo was not found or req.body is empty!`
+                    message: `Cannot update sexo with id=${id}. Maybe sexo was not found or req.body is empty!`
                 });
             }
         })
