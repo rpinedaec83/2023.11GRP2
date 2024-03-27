@@ -1,20 +1,34 @@
 module.exports = (sequelize, DataTypes) => {
     const OrdenCompra = sequelize.define("ordenCompra", {
+       
+
         fecha: {
             type: DataTypes.STRING,
+            
         },
         estado: {
             type: DataTypes.STRING,
+            
         },
-        impuestos: {
-            type: DataTypes.STRING,
+        
+        usuarioId: {
+            type: DataTypes.INTEGER,
+            
+        },
+
+        cuponId: {
+            type: DataTypes.INTEGER,
+            
+        },
+        
+        carritoCompraId: {
+            type: DataTypes.INTEGER,
         }
+
+        
     });
 
-    OrdenCompra.associate = (models) => {
-        OrdenCompra.belongsTo(models.usuarios);
-        OrdenCompra.belongsTo(models.cupones);
-    };
+    
 
     return OrdenCompra;
 };

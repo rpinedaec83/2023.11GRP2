@@ -3,17 +3,18 @@ module.exports = (sequelize, DataTypes) => {
         usuario: {
             type: DataTypes.STRING,
             unique: true 
+       
         },
+
+
         contraseña: {
             type: DataTypes.STRING,
             unique: true 
-        }
+       
+        },
+
+
+        
     });
-
-    Usuarios.associate = (models) => {
-        Usuarios.hasMany(models.ordenCompra);
-        Usuarios.hasMany(models.cursos);
-    };
-
     return Usuarios;
 };

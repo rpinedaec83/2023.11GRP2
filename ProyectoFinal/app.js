@@ -37,7 +37,7 @@ app.get("/", (req, res) => {
     res.json({ message: "Welcome to veterinaria application." });
 });
 
-require("./app/routes/cursos.routes")(app);
+require("./app/routes/carritoCompras.routes")(app);
 require("./app/routes/usuarios.routes")(app);
 require("./app/routes/ordenCompra.routes")(app);
 

@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const Cursos = sequelize.define("cursos", {
+    const CarritoCompras = sequelize.define("carritoCompras", {
         nombre: {
             type: DataTypes.STRING,
         },
@@ -12,17 +12,15 @@ module.exports = (sequelize, DataTypes) => {
         portada: {
             type: DataTypes.STRING,
         },
-        valor: {
-            type: DataTypes.STRING,
+        precio: {
+            type: DataTypes.STRING, // FLOAT O DOUBLE
         },
         usuarioId: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER, //
+        },
+        cuponId: {
+            type: DataTypes.INTEGER, // STRING
         },
     });
-
-    Cursos.associate = (models) => {
-        Cursos.belongsTo(models.usuarios);
-    };
-
-    return Cursos;
+    return CarritoCompras;
 };

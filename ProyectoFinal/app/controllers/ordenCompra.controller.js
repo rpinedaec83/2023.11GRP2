@@ -4,8 +4,6 @@ const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
     // Validate request
-
-
     if (!req.body.fecha) {
         res.status(400).send({
             message: "Content can not be empty!"
@@ -14,13 +12,10 @@ exports.create = (req, res) => {
     }
     const ordenCompra = {
         fecha: req.body.fecha,
-        impuestos: req.body.impuestos,
-        estado: req.body.estado,
+        estado: "pendiente", // Establecer el estado como "pendiente" inicialmente
         usuarioId: req.body.usuarioId,
         cuponId: req.body.cuponId,
-
-
-        
+        carritoCompraId: req.body.carritoCompraId
     };
     OrdenCompra.create(ordenCompra)
         .then(data => {
@@ -28,18 +23,19 @@ exports.create = (req, res) => {
         })
         .catch(err => {
             res.status(500).send({
-                message:
-                    err.message || "Some error occurred while creating the Tutorial."
+                message: err.message || "Some error occurred while creating the order."
             });
         });
 };
+
+
 exports.findAll = (req, res) => {
     const fecha = req.query.fecha;
    
     var condition = fecha ? { fecha: { [Op.like]: `%${fecha}%` } } : null;
 
     OrdenCompra.findAll({
-        include: ["usuarios","cupon"],
+        include: ["usuarios","cupon", "carritoCompras"],
 
        
     }, { where: condition })
