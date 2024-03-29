@@ -4,37 +4,41 @@ const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.nombre) {
+    if (!req.body || req.body.length === 0) {
         res.status(400).send({
             message: "Content can not be empty!"
         });
         return;
     }
-    const listadoCursos = {
-        nombre: req.body.nombre,
-        descripcion: req.body.descripcion,
-        imagen: req.body.imagen,
-        portada: req.body.portada,
-        precio: req.body.precio,
-         
-    };
 
-    
-    ListadoCursos.create(listadoCursos)
+    const cursos = req.body.map(curso => {
+        return {
+            nombre: curso.nombre,
+            descripcion: curso.descripcion,
+            imagen: curso.imagen,
+            portada: curso.portada,
+            precio: curso.precio
+        };
+    });
+
+    ListadoCursos.bulkCreate(cursos)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             if (err.name === 'SequelizeUniqueConstraintError') {
                 res.status(400).send({
-                    message: "Curso ya existe en la base de datos. Por favor, elija un Curso diferentes."
+                    message: "Uno o más cursos ya existen en la base de datos. Por favor, elija cursos diferentes."
                 });
             } else {
                 res.status(500).send({
-                    message: err.message || "Se produjo un error al crear el Cursos."
+                    message: err.message || "Se produjo un error al crear los cursos."
                 });
             }
         });
+
+    
+    
 };
 exports.findAll = (req, res) => {
     const nombre = req.query.nombre;

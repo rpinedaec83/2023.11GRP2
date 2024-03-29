@@ -4,30 +4,31 @@ const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.diversoscupones) {
+    if (!req.body || req.body.length === 0) {
         res.status(400).send({
             message: "Content can not be empty!"
         });
         return;
     }
-    const cupones = {
-        diversoscupones: req.body.diversoscupones,
-         
-    };
 
-    
-    Cupon.create(cupones)
+    const cupones = req.body.map(cupon => {
+        return {
+            diversoscupones: cupon.diversoscupones
+        };
+    });
+
+    Cupon.bulkCreate(cupones)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             if (err.name === 'SequelizeUniqueConstraintError') {
                 res.status(400).send({
-                    message: "cupones ya existen en la base de datos. Por favor, elija diferentes."
+                    message: "Uno o más cupones ya existen en la base de datos. Por favor, elija cupones diferentes."
                 });
             } else {
                 res.status(500).send({
-                    message: err.message || "Se produjo un error al crear cupones."
+                    message: err.message || "Se produjo un error al crear los cupones."
                 });
             }
         });
