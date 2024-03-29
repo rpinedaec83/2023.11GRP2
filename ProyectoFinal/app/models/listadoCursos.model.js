@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
         },
         precio: {
-            type: DataTypes.STRING, // FLOAT O DOUBLE
+            type: DataTypes.STRING, 
         }
         
     });

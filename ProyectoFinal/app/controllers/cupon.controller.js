@@ -6,7 +6,7 @@ exports.create = (req, res) => {
     // Validate request
     if (!req.body.diversoscupones) {
         res.status(400).send({
-            message: "El usuario y la contraseña son obligatorios."
+            message: "Content can not be empty!"
         });
         return;
     }
@@ -23,11 +23,11 @@ exports.create = (req, res) => {
         .catch(err => {
             if (err.name === 'SequelizeUniqueConstraintError') {
                 res.status(400).send({
-                    message: "El usuario o la contraseña ya existen en la base de datos. Por favor, elija un usuario o contraseña diferentes."
+                    message: "cupones ya existen en la base de datos. Por favor, elija diferentes."
                 });
             } else {
                 res.status(500).send({
-                    message: err.message || "Se produjo un error al crear el usuario."
+                    message: err.message || "Se produjo un error al crear cupones."
                 });
             }
         });
@@ -46,7 +46,7 @@ exports.findAll = (req, res) => {
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while retrieving sexos."
+                    err.message || "Some error occurred while retrieving cupones."
             });
         });
 };
@@ -59,13 +59,13 @@ exports.findOne = (req, res) => {
                 res.send(data);
             } else {
                 res.status(404).send({
-                    message: `Cannot find sexo with id=${id}.`
+                    message: `Cannot find cupones with id=${id}.`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error retrieving sexo with id=" + id
+                message: "Error retrieving cupones with id=" + id
             });
         });
 };
@@ -78,17 +78,17 @@ exports.update = (req, res) => {
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "sexo was updated successfully."
+                    message: "cupones was updated successfully."
                 });
             } else {
                 res.send({
-                    message: `Cannot update sexo with id=${id}. Maybe sexo was not found or req.body is empty!`
+                    message: `Cannot update cupones with id=${id}. Maybe cupones was not found or req.body is empty!`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error updating sexo with id=" + id
+                message: "Error updating cupones with id=" + id
             });
         });
 };
@@ -101,17 +101,17 @@ exports.delete = (req, res) => {
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "sexo was deleted successfully!"
+                    message: "cupones was deleted successfully!"
                 });
             } else {
                 res.send({
-                    message: `Cannot delete sexo with id=${id}. Maybe sexo was not found!`
+                    message: `Cannot delete cupones with id=${id}. Maybe cupones was not found!`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Could not delete sexo with id=" + id
+                message: "Could not delete cupones with id=" + id
             });
         });
 };
@@ -121,12 +121,12 @@ exports.deleteAll = (req, res) => {
       truncate: false
     })
       .then(nums => {
-        res.send({ message: `${nums} sexos were deleted successfully!` });
+        res.send({ message: `${nums} cupones were deleted successfully!` });
       })
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while removing all sexos."
+            err.message || "Some error occurred while removing all cupones."
         });
       });
 };

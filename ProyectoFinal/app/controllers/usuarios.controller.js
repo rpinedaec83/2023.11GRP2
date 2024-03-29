@@ -54,7 +54,7 @@ exports.findAll = (req, res) => {
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while retrieving sexos."
+                    err.message || "Some error occurred while retrieving usuario y contraseña."
             });
         });
 };
@@ -67,13 +67,13 @@ exports.findOne = (req, res) => {
                 res.send(data);
             } else {
                 res.status(404).send({
-                    message: `Cannot find sexo with id=${id}.`
+                    message: `Cannot find usuario y contraseña with id=${id}.`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error retrieving sexo with id=" + id
+                message: "Error retrieving usuario y contraseña with id=" + id
             });
         });
 };
@@ -86,17 +86,17 @@ exports.update = (req, res) => {
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "sexo was updated successfully."
+                    message: "usuario y contraseña was updated successfully."
                 });
             } else {
                 res.send({
-                    message: `Cannot update sexo with id=${id}. Maybe sexo was not found or req.body is empty!`
+                    message: `Cannot update usuario y contraseña with id=${id}. Maybe usuario y contraseña was not found or req.body is empty!`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error updating sexo with id=" + id
+                message: "Error updating usuario y contraseña with id=" + id
             });
         });
 };
@@ -109,17 +109,17 @@ exports.delete = (req, res) => {
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "sexo was deleted successfully!"
+                    message: "usuario y contraseña was deleted successfully!"
                 });
             } else {
                 res.send({
-                    message: `Cannot delete sexo with id=${id}. Maybe sexo was not found!`
+                    message: `Cannot delete usuario y contraseña with id=${id}. Maybe usuario y contraseña was not found!`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Could not delete sexo with id=" + id
+                message: "Could not delete usuario y contraseña with id=" + id
             });
         });
 };
@@ -129,12 +129,12 @@ exports.deleteAll = (req, res) => {
       truncate: false
     })
       .then(nums => {
-        res.send({ message: `${nums} sexos were deleted successfully!` });
+        res.send({ message: `${nums} usuario y contraseña were deleted successfully!` });
       })
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while removing all sexos."
+            err.message || "Some error occurred while removing all usuario y contraseña."
         });
       });
 };

@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER, //
         },
         cuponId: {
-            type: DataTypes.INTEGER, // STRING
+            type: DataTypes.INTEGER, // 
         },
     });
     return CarritoCompras;
