@@ -43,6 +43,8 @@ require("./app/routes/ordenCompra.routes")(app);
 
 require("./app/routes/cupon.routes")(app);
 
+require("./app/routes/listadoCursos.routes")(app);
+
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
