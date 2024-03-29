@@ -12,7 +12,7 @@ exports.create = (req, res) => {
     }
     const ordenCompra = {
         fecha: req.body.fecha,
-        estado: "pendiente", // Establecer el estado como "pendiente" inicialmente
+        estado: "pendiente", // estado en pendiente inicialmente
         usuarioId: req.body.usuarioId,
         cuponId: req.body.cuponId,
         carritoCompraId: req.body.carritoCompraId
